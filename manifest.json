@@ -1,0 +1,34 @@
+{
+  "name": "Etherscan Transaction Cancellation",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "description": "This extension allows to cancell pending transactions on Etherscan.",
+  "permissions": ["declarativeContent"],
+  "background": { "persistent": false, "scripts": ["background.js"] },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "js": ["content.js"],
+      "matches": ["https://etherscan.io/*"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    "pageScript.js"
+  ],
+  "page_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/logo16.png",
+      "32": "images/logo32.png",
+      "48": "images/logo48.png",
+      "128": "images/logo128.png"
+    }
+  },
+  "icons": {
+    "16": "images/logo16.png",
+    "32": "images/logo32.png",
+    "48": "images/logo48.png",
+    "128": "images/logo128.png"
+  }
+}
