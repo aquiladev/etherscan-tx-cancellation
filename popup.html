@@ -3,19 +3,16 @@
   <head>
     <style>
       body {
-        width: 320px;
+        width: 380px;
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
-        padding-bottom: 20px;
+        padding-bottom: 10px;
       }
       body > p {
-        padding: 4px;
+        margin: 4px;
         color: #6e7898;
         font-size: 16px;
-        font-weight: 400;
-        line-height: 18px;
-        text-align: center;
       }
       .btn {
         width: 144px;
@@ -37,7 +34,16 @@
     <p>
       This extension allows canceling pending transactions on Etherscan.
     </p>
-    <div>
+    <p>
+      <b>Cancellation</b> is sending a transaction with zero value and the same nonce. An account should send the transaction to themself. Gas price for the transaction should be higher than for transaction which should be canceled. 
+    </p>
+    <p>
+      The extension requires injected MetaMask as a wallet. Transactions are executed on behalf of the injected MetaMask account. The account controls gas price of the transaction by themself.
+    </p>
+    <p>
+      <b style="color: orangered;">Warning:</b> The cancelation will not work if the transaction was initiated from MetaMask. MetaMask ignores defined nonce, that is why it will not be possible. The transaction which was initiated from MetaMask can be canceled in MetaMask.
+    </p>
+    <div style="display: flex; margin-top: 10px;">
       <a class="btn follow-me-button" href="https://twitter.com/sergiibomko" style="background-color: #248ced;" target="_blank">
         Follow
       </a>

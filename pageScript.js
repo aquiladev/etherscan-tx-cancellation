@@ -21,10 +21,13 @@ window.addEventListener("load", async () => {
 
 window.addEventListener("CANCEL_TX", (event) => {
     console.log(event);
-    web3.eth.sendTransaction({
-        from: event.detail.from,
-        to: event.detail.from,
-        value: 0,
-        nonce: +event.detail.nonce
-    }, console.log);
+    result = confirm('The cancelation will not work if the transaction was initiated from MetaMask. MetaMask ignores defined nonce, that is why it will not be possible.');
+    if (result) {
+        web3.eth.sendTransaction({
+            from: event.detail.from,
+            to: event.detail.from,
+            value: 0,
+            nonce: +event.detail.nonce
+        }, console.log);
+    }
 }, false);
