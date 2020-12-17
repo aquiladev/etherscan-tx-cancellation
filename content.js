@@ -33,12 +33,18 @@
           theButton.addEventListener("click", function () {
             var hash = document.getElementById("spanTxHash").innerHTML.trim();
             var from = document.getElementById("addressCopy").innerHTML.trim();
-            var nonce = document.getElementById("ContentPlaceHolder1_spanNonce")
+            var nonceEl = document.getElementById("ContentPlaceHolder1_spanNonce")
               .parentElement
               .parentElement
               .children[1]
-              .children[0]
-              .innerHTML.trim();
+              .children[0];
+            if(!nonceEl) {
+              nonceEl = document.getElementById("ContentPlaceHolder1_spanNonce")
+              .parentElement
+              .parentElement
+              .children[1];
+            }
+            var nonce = nonceEl.innerHTML.trim();
 
             let event = new CustomEvent("CANCEL_TX", { detail: { txHash: hash, from, nonce } });
             window.dispatchEvent(event);
